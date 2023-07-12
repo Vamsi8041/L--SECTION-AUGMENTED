@@ -1,0 +1,21 @@
+from tkinter import *
+from tkinter.filedialog import asksaveasfilename
+import tkinter as tk
+sw=Tk()
+sw.geometry('500x500')
+sw.title('Text Editor')
+def save():
+    filepath=asksaveasfilename(defaultextension='untitled.txt',filetypes=[("textfiles",".txt"),('ALLFILES','.*')])
+    if not filepath:
+        return
+    with open(filepath,"w") as output_file:
+            text=text1.get(1.0,'end-1c')
+            output_file.write(text)
+heading=Label(sw,text='Text Editor - python ',font=('bold',20),bg='white')
+heading.pack()
+text1=Text(sw,width=50,height=10)
+text1.insert(END," ")
+text1.pack()
+button=Button(sw,text='SAVE',font=('normal',10),command=save)
+button.place(x=400,y=400)
+sw.mainloop()

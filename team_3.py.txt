@@ -1,0 +1,31 @@
+order=input("enter the order:")
+if order=="ascending":
+    def insertion_sort(list):
+        for i in range (len(list)):
+            temp=list[i]
+            j=i
+            while j>0 and list[j-1]>temp:
+                list[j]=list[j-1]
+                j=j-1
+                list[j]=temp
+        return list
+if order=="descending":
+    def insertion_sort(list):
+        for i in range (len(list)):
+            temp=list[i]
+            j=i
+            while j>0 a6
+            nd list[j-1]<temp:
+                list[j]=list[j-1]
+                j=j-1
+                list[j]=temp
+        return list
+a=int(input("enter the length:"))
+l=[]
+print("enter the elements into list:")
+for i in range (a):
+    b=int(input(""))
+    l.append(b)
+print("list to be sorted:",l)
+c=insertion_sort(l)
+print("list in",order,"order:",c)

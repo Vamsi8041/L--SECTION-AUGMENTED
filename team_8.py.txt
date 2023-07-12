@@ -1,0 +1,23 @@
+import random
+def guess_number():
+    x=int(input("Enter the minimum number:"))
+    y=int(input("Enter the maximum number:"))
+    number = random.randint(x,y)  
+    attempts = 0
+    print("Welcome to the Number Guessing Game!")
+    print("I'm thinking of a number between ",x," and ",y)
+    while True:
+        guess = int(input("Take a guess: "))
+        attempts += 1
+        if guess < x:
+            print("the number is out of bounds")
+        elif guess < number:
+            print("Too low! Try a higher number")
+        elif guess > y :
+            print("the number is out of range")
+        elif guess > number:
+            print("Too high! Try a lower number")
+        else:
+            print("Congratulations!You guessed the number in",{attempts},"attempts!")
+            break
+guess_number()

@@ -1,0 +1,38 @@
+class InvalidStringError(Exception):
+    pass
+
+
+def count_character_frequency(strings):
+    frequency = {}
+
+    for string in strings:
+        for char in string:
+            frequency[char] = frequency.get(char, 0) + 1
+
+    return frequency
+
+
+# Read the number of strings 'n'
+n = int(input("Enter the number of strings: "))
+
+strings = []
+# Read the strings
+for i in range(n):
+    string = input(f"Enter string {i + 1}: ")
+
+    # Check for conditions
+    if any(char.isdigit() for char in string):
+        raise InvalidStringError("String has digit in it")
+    if " " in string:
+        raise InvalidStringError("String has space in it")
+    if any(not char.isalnum() for char in string):
+        raise InvalidStringError("String contains special characters")
+
+    strings.append(string)
+
+# Get the frequency of characters in all the strings
+character_frequency = count_character_frequency(strings)
+
+# Print the frequency of characters
+for char, count in character_frequency.items():
+    print(f"The character '{char}' appears {count} time(s).")

@@ -1,0 +1,43 @@
+import random
+
+def spin_a_yarn():
+    players = []
+    story = []
+    max_lines = 100
+    line_count = 0
+
+    # Determine the number of players
+    num_players = int(input("Enter the number of players: "))
+
+    # Get player names
+    for i in range(1, num_players + 1):
+        player_name = input(f"Enter the name of Player {i}: ")
+        players.append(player_name)
+
+    # Shuffle the player order
+    random.shuffle(players)
+
+    print("\n--- Spin a Yarn ---")
+    print("Let's create a story together!")
+
+    while line_count < max_lines:
+        for player in players:
+            player_sentence = input(f"{player}, it's your turn: ")
+            line_count += 1
+            story.append(f"{player}: {player_sentence}")
+
+            if line_count >= max_lines:
+                break
+
+            # Ask players if they want to continue
+            if input("Continue the story? (y/n): ").lower() != 'y':
+                line_count = max_lines
+                break
+
+    print("\n--- Story ---")
+    for line in story:
+        print(line)
+
+    print("\n--- The End ---")
+
+spin_a_yarn()

@@ -1,0 +1,22 @@
+import time
+def calculate_typing_speed():
+    print("Type the following sentence:")
+    sentence = input('')
+    print(sentence)
+    input("Press Enter when you are ready to start typing.")
+    start_time = time.time()
+    user_input = input()
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    original_words = sentence.split()
+    typed_words = user_input.split()
+    correct_words = 0
+    for original_word, typed_word in zip(original_words, typed_words):
+        if original_word == typed_word:
+            correct_words += 1
+    accuracy = (correct_words / len(original_words)) * 100
+    words_typed = len(typed_words)
+    typing_speed = (words_typed / elapsed_time) * 60
+    print("Your typing speed is {:.2f} words per minute.".format(typing_speed))
+    print("Accuracy: {:.2f}%".format(accuracy))
+calculate_typing_speed()

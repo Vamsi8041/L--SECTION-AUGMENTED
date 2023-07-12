@@ -1,0 +1,50 @@
+def print_board(x):
+    print("---------")
+    for i in x:
+        print("|", end="")
+        for j in i:
+            print(j, end="|")
+        print("\n---------")
+def check_winner(x):
+    for i in x:
+        if i[0] == i[1] == i[2] != " ":
+            return i[0]
+    for j in range(3):
+        if x[0][j] == x[1][j] == x[2][j] != " ":
+            return x[0][j]
+    if x[0][0] == x[1][1] == x[2][2] != " ":
+        return x[0][0]
+    if x[0][2] == x[1][1] == x[2][0] != " ":
+        return x[0][2]
+    return None
+def board_full(y):
+    for i in y:
+        if " " in i:
+            return False
+    return True
+
+def play_game():
+    board = [[" " for _ in range(3)] for _ in range(3)]
+    current_player = "X"
+    winner = None
+
+    while winner is None and not board_full(board):
+        print_board(board)
+        row = int(input("Enter the row (0-2): "))
+        col = int(input("Enter the column (0-2): "))
+
+        if board[row][col] != " ":
+            print("Invalid move. Try again.")
+            continue
+        board[row][col] = current_player
+        winner = check_winner(board)
+        current_player = "O" if current_player == "X" else "X"
+
+    print_board(board)
+
+    if winner:
+        print(f"Player {winner} wins!")
+    else:
+        print("It's a tie!")
+
+play_game()

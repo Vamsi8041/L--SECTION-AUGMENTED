@@ -1,0 +1,36 @@
+import random
+def generate_story(keywords):
+    story = ""
+    elements = {
+        'Sentence_starter':['About 100 years ago', ' In the 20 BC', 'Once upon a time'],
+        'character':[' there lived a king.',' there was a man named Jack.',
+             ' there lived a farmer.'],
+        'time':[' One day', ' One full-moon night'],
+        'story_plot':[' he was passing by',' he was going for a picnic to '],
+        'place':[' the mountains', ' the garden'],
+        'second_character':[' he saw a man', ' he saw a young lady'],
+        'age':[' who seemed to be in late 20s', ' who seemed very old and feeble'],
+        'work':[' searching something.', ' digging a well on roadside.'],
+
+        'when':['A few years ago', 'Yesterday', 'Last night', 'A long time ago','On 20th Jan'],
+        'who':['a rabbit', 'an elephant', 'a mouse', 'a turtle','a cat'],
+        'name':['Ali', 'Miriam','daniel', 'Hoouk', 'Starwalker'],
+        'residence':['Barcelona','India', 'Germany', 'Venice', 'England'],
+        'went':['cinema', 'university','seminar', 'school', 'laundry'],
+        'happened':['made a lot of friends','Eats a burger', 'found a secret key', 'solved a mistery', 'wrote a book'],
+
+        'initial':['A long time ago', 'Yesterday', 'Before you were born', 'In future', 'Before Thanos arrived'],
+        'heros':['Shazam', 'Iron Man', 'Batman', 'Superman', 'Captain America'],
+        'went':['Arkham Asylum', 'Gotham City', 'Stark Tower', 'Bat Cave', 'Avengers HQ'],
+        'what':['to eat a lot of cakes', 'to fight for justice', 'to steal ice cream', 'to dance']
+    }
+    for keyword in keywords:
+        if keyword in elements:
+            sentence = random.choice(elements[keyword])
+            story += sentence + " "
+        else:
+            print(" Enter valid keyword")
+    return story
+user_keywords = input("Enter keywords separated by spaces: ").split()
+generated_story = generate_story(user_keywords)
+print(generated_story)
